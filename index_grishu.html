@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Georgia,serif;background:radial-gradient(circle at top,#fff5f7,#f7dfe5 45%,#ead0d8);color:#3d2930;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.card{width:min(92%,520px);padding:42px 30px;text-align:center;background:rgba(255,255,255,.72);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.8);border-radius:28px;box-shadow:0 20px 70px rgba(90,40,55,.18);position:relative;z-index:2}
+.heart{font-size:52px;animation:pulse 1.5s infinite}.small{font-family:Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:11px;color:#9b6d7b;margin-top:8px}
+h1{font-size:38px;margin:12px 0 16px;font-weight:500}p{font-family:Arial,sans-serif;line-height:1.7;font-size:15px;color:#59454c}.note{font-size:12px;color:#96727d;margin-top:20px}
+button{border:0;border-radius:999px;padding:13px 27px;font-size:15px;cursor:pointer;margin:8px;font-family:Arial,sans-serif;transition:.25s}.yes{background:#9d5269;color:white;box-shadow:0 8px 20px rgba(157,82,105,.25)}.no{background:#f1e4e8;color:#694b55}
+button:hover{transform:translateY(-2px)}.hidden{display:none}.floating{position:fixed;bottom:-30px;font-size:20px;opacity:.7;animation:float 8s linear infinite;z-index:1}
+@keyframes pulse{50%{transform:scale(1.12)}}@keyframes float{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="card" id="card">
+  <div class="heart">❤️</div>
+  <div class="small">A little message for you</div>
+  <h1>Hey Grishu ❤️</h1>
+  <p style="margin-top:-4px;font-family:Georgia,serif;font-size:18px;color:#8a5a68;">I made this just for you.</p>
+  <h1 style="font-size:30px;margin-top:4px;">I'm genuinely sorry.</h1>
+  <p>
+    I know what happened on that call wasn't a good first impression.
+    I was confused at the beginning, reacted badly, and then I made it
+    worse by accidentally taking someone else's name.
+  </p>
+  <p>
+    I understand why that hurt you. I’m not trying to justify it —
+    I just genuinely wanted to say <b>I'm sorry.</b>
+  </p>
+  <p>
+    You didn't deserve to feel like that. ❤️
+  </p>
+  <button class="yes" onclick="accept()">Okay, I forgive you 🥺</button>
+  <button class="no" onclick="moveNo()">Not yet 😤</button>
+  <div class="note">No pressure. I just wanted you to know I mean it.</div>
+</div>
+
+<script>
+let noCount=0;
+function moveNo(){
+  noCount++;
+  const b=document.querySelector('.no');
+  if(noCount<3){b.style.transform=`translate(${Math.random()*120-60}px,${Math.random()*80-40}px)`;}
+  else {b.innerText="Okay okay 😭"; b.style.transform="none";}
+}
+function accept(){
+ document.getElementById('card').innerHTML=`
+ <div class="heart">💗</div>
+ <div class="small">Thank you</div>
+ <h1>That means a lot.</h1>
+ <p>I promise I’ll be more careful with my words next time.</p>
+ <p>And yes… I'll try my best to make a much better impression from here. 😌</p>
+ <p><b>Truce, Grishu? 🤝❤️</b></p>`;
+ for(let i=0;i<28;i++){setTimeout(()=>{let x=document.createElement('div');x.className='floating';x.innerText=['❤️','💗','✨','🌸'][i%4];x.style.left=Math.random()*100+'vw';x.style.animationDuration=(4+Math.random()*5)+'s';document.body.appendChild(x);},i*70)}
+}
+</script>
+</body>
+</html>
